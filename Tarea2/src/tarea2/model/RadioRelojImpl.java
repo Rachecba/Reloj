@@ -7,7 +7,7 @@ package tarea2.model;
 
 import java.util.function.Consumer;
 import tarea2.states.InitState;
-import tarea2.states.ReadyState;
+import tarea2.states.RadioState;
 import tarea2.states.State;
 
 /**
@@ -22,7 +22,7 @@ public class RadioRelojImpl implements RadioReloj {
     public RadioRelojImpl(RadioRelojEngine radio){
         this.engine = radio;
         this.state = new InitState(this);
-        this.state = new ReadyState(this);
+        this.state = new RadioState(this);
     }
     
     public void changeState(State state){
