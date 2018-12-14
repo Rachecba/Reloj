@@ -9,6 +9,7 @@ package tarea2.model;
  *
  * @author tvkev
  */
-public class RadioRelojImpl {
+public class RadioRelojImpl implements Reloj{
+    
     
 }
