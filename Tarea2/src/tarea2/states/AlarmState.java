@@ -15,16 +15,24 @@ public class AlarmState extends State{
 
     public AlarmState(RadioRelojImpl reloj) {
         super(reloj);
+        
+        if(!reloj.getEngine().isAlarmaOn()){
+            reloj.getEngine().setAlarmaHoras(reloj.getEngine().getHoras());
+            reloj.getEngine().setAlarmaMinutos(reloj.getEngine().getMinutos());
+            reloj.getEngine().setAlarmaOn(true);
+        }
     }
 
     @Override
     public String onSwitch() {
         reloj.changeState(new OffState(reloj));
+        return "Come back soon...";
     }
 
     @Override
     public String onNext() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.getEngine().nextMinAlarm();
+        
     }
 
     @Override

@@ -39,7 +39,6 @@ public class RadioRelojEngine {
         return "Apagado ";
     }
     
-    
     public String nextEmisora() {
         Emisora++;
         if (Emisora > getRadioList().size() - 1) {
