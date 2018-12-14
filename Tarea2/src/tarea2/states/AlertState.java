@@ -19,27 +19,31 @@ public class AlertState extends State{
 
     @Override
     public String onSwitch() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.changeState(new OffState(reloj));
+        return "Bye bye...";
     }
 
     @Override
     public String onNext() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Press alarm to turn off the alarm...";
     }
 
     @Override
     public String onPrevious() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Press alarm to turn off the alarm...";
     }
 
     @Override
     public String set() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Press alarm to turn off the alarm...";
     }
 
     @Override
     public String Alarm() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.changeState(new ClockState(reloj));
+        reloj.getEngine().setAlarmaOn(false);
+        
+        return "Turning off the alarm...";
     }
     
 }
