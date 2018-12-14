@@ -27,6 +27,7 @@ public class RadioRelojEngine {
     int alarmaHoras=0;
     int alarmaMinutos=0;
     String hora="";
+    String alarma="";
 
     
     public String turnOn() {
@@ -154,6 +155,23 @@ public class RadioRelojEngine {
         };
         timer.schedule(timerTask, 0, 1000);
         
+    }
+    
+    public String horaAlarma(){
+        if(alarmaHoras<10){
+            if(alarmaMinutos<10){
+                alarma = "0"+alarmaHoras+"0"+alarmaMinutos;
+            }else{
+                alarma = "0"+alarmaHoras+alarmaMinutos;
+            }
+        }else{
+            if(alarmaMinutos<10){
+                alarma = alarmaHoras+"0"+alarmaMinutos;
+            }else{
+                alarma = ""+alarmaHoras+alarmaMinutos;
+            }
+        }
+        return alarma;
     }
     
     public String getHora(){ //manda la hora al view.
