@@ -24,8 +24,8 @@ public class RadioRelojEngine {
     static int Emisora;
     int minutos = 1;
     int horas = 0;
-    int Alarmahoras=0;
-    int AlarmaSegndos=0;
+    int alarmaHoras=0;
+    int alarmaMinutos=0;
     String hora="";
 
     
@@ -69,6 +69,14 @@ public class RadioRelojEngine {
     }
 
     public void previusMin() {
+        minutos--;
+    }
+    
+    public void nextMinAlarm() {
+        alarmaHoras++;
+    }
+
+    public void previusMinAlarm() {
         minutos--;
     }
 
@@ -138,7 +146,7 @@ public class RadioRelojEngine {
                         }
                     }
                     if(alarmaOn){
-                        if(Alarmahoras==horas&&AlarmaSegndos==minutos){
+                        if(alarmaHoras==horas&&alarmaMinutos==minutos){
                             alarmaSonando=true;
                         }
                     }
@@ -151,6 +159,70 @@ public class RadioRelojEngine {
     
     public String getHora(){ //manda la hora al view.
         return this.hora;
+    }
+
+    public boolean isAlarmaOn() {
+        return alarmaOn;
+    }
+
+    public void setAlarmaOn(boolean alarmaOn) {
+        this.alarmaOn = alarmaOn;
+    }
+
+    public boolean isAlarmaSonando() {
+        return alarmaSonando;
+    }
+
+    public void setAlarmaSonando(boolean alarmaSonando) {
+        this.alarmaSonando = alarmaSonando;
+    }
+
+    public List<String> getEmisorasList() {
+        return EmisorasList;
+    }
+
+    public void setEmisorasList(List<String> EmisorasList) {
+        this.EmisorasList = EmisorasList;
+    }
+
+    public static int getEmisora() {
+        return Emisora;
+    }
+
+    public static void setEmisora(int Emisora) {
+        RadioRelojEngine.Emisora = Emisora;
+    }
+
+    public int getMinutos() {
+        return minutos;
+    }
+
+    public void setMinutos(int minutos) {
+        this.minutos = minutos;
+    }
+
+    public int getHoras() {
+        return horas;
+    }
+
+    public void setHoras(int horas) {
+        this.horas = horas;
+    }
+
+    public int getAlarmaHoras() {
+        return alarmaHoras;
+    }
+
+    public void setAlarmaHoras(int alarmaHoras) {
+        this.alarmaHoras = alarmaHoras;
+    }
+
+    public int getAlarmaMinutos() {
+        return alarmaMinutos;
+    }
+
+    public void setAlarmaMinutos(int alarmaMinutos) {
+        this.alarmaMinutos = alarmaMinutos;
     }
     
 }
