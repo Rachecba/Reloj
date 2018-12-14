@@ -13,9 +13,9 @@ import tarea2.model.RadioRelojImpl;
  *
  * @author Rachel
  */
-public class InitStates extends State{
+public class InitState extends State{
 
-    public InitStates(RadioRelojImpl reloj) {
+    public InitState(RadioRelojImpl reloj) {
         super(reloj);
         
         List emisoras = new ArrayList<>();

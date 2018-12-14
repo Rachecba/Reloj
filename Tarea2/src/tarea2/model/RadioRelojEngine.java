@@ -96,8 +96,7 @@ public class RadioRelojEngine {
         RadioRelojEngine.Emisora = Emisora;
     }
     
-    
-    private void timeCronometro2(int tiemp) {
+    public void timeCronometro2() {
         Timer timer;
         timer = new Timer();
         TimerTask timerTask;
@@ -147,6 +146,11 @@ public class RadioRelojEngine {
             }
         };
         timer.schedule(timerTask, 0, 1000);
+        
+    }
+    
+    public String getHora(){ //manda la hora al view.
+        return this.hora;
     }
     
 }
