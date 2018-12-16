@@ -38,6 +38,11 @@ public class RadioRelojImpl implements RadioReloj {
         return this.engine;
     }
     
+    public String getHora(){
+        return this.engine.getHora();
+    }
+   
+    
     @Override
     public void attach(Consumer<String> listener) {
         this.listener = listener;

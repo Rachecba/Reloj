@@ -32,22 +32,25 @@ public class AlarmState extends State{
     @Override
     public String onNext() {
         reloj.getEngine().nextMinAlarm();
-        
+        return reloj.getEngine().horaAlarma();
     }
 
     @Override
     public String onPrevious() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.getEngine().previusMinAlarm();
+        return reloj.getEngine().horaAlarma();
     }
 
     @Override
     public String set() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.changeState(new RadioState(reloj));
+        return "Changing to radio mode...";
     }
 
     @Override
     public String Alarm() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        reloj.changeState(new ClockState(reloj));
+        return "Changing to clock mode...";
     }
     
 }

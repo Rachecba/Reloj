@@ -5,6 +5,11 @@
  */
 package tarea2;
 
+import tarea2.model.RadioReloj;
+import tarea2.model.RadioRelojEngine;
+import tarea2.model.RadioRelojImpl;
+import tarea2.view.swing.HardwareSwing;
+
 /**
  *
  * @author tvkev
@@ -15,7 +20,9 @@ public class Tarea2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+        RadioReloj radio = new RadioRelojImpl(new RadioRelojEngine());
+        
+        HardwareSwing view = new HardwareSwing(radio);
+        
+    }  
 }
