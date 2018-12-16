@@ -66,19 +66,55 @@ public class RadioRelojEngine {
     }
     
     public void nextMin() {
-        horas++;
+        if(minutos>=59){
+            minutos=0;
+            if(horas>=23){
+                horas = 0;
+            }else{
+                horas++;
+            }
+        }else{
+            minutos++;
+        }
     }
 
     public void previusMin() {
-        minutos--;
+        if(minutos<=0){
+            minutos=59;
+            if(horas<=0){
+                horas = 23;
+            }else{
+                horas--;
+            }
+        }else{
+            minutos--;
+        }
     }
     
     public void nextMinAlarm() {
-        alarmaHoras++;
+        if(alarmaMinutos>=59){
+            alarmaMinutos=0;
+            if(alarmaHoras>=23){
+                alarmaHoras = 0;
+            }else{
+                alarmaHoras++;
+            }
+        }else{
+            alarmaMinutos++;
+        }
     }
 
     public void previusMinAlarm() {
-        minutos--;
+        if(alarmaMinutos<=0){
+            alarmaMinutos=59;
+            if(alarmaHoras<=0){
+                alarmaHoras = 23;
+            }else{
+                alarmaHoras--;
+            }
+        }else{
+            alarmaMinutos--;
+        }
     }
 
     public boolean isPlaying() {
