@@ -7,17 +7,24 @@ package tarea2.view.swing;
 
 import java.util.logging.Logger;
 import javax.swing.JButton;
+import tarea2.model.RadioReloj;
 
 /**
  *
  * @author zunigaur
  */
-public class HardwareSwing extends  javax.swing.JFrame {
+public class HardwareSwing extends javax.swing.JFrame {
     
    private static Logger logger = Logger.getLogger(HardwareSwing.class.getName());
+   RadioReloj reloj;
     
     public HardwareSwing() {
         initComponents();
+        reloj.onInit(); //inicializo todo
+    }
+    
+    public HardwareSwing(RadioReloj reloj){
+        this.reloj = reloj;
     }
 
     /**
@@ -36,11 +43,11 @@ public class HardwareSwing extends  javax.swing.JFrame {
         LReloj = new javax.swing.JLabel();
         radio = new javax.swing.JTextField();
         estado = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        onSwitchButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        setButton = new javax.swing.JButton();
+        AlarmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,36 +82,36 @@ public class HardwareSwing extends  javax.swing.JFrame {
         estado.setBackground(new java.awt.Color(255, 255, 0));
         estado.setVerifyInputWhenFocusTarget(false);
 
-        jButton1.setText("On");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        onSwitchButton.setText("On/Off");
+        onSwitchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSwitch(evt);
             }
         });
 
-        jButton2.setText("+");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        addButton.setText("+");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAumentar(evt);
             }
         });
 
-        jButton3.setText("-");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setText("-");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDisminuir(evt);
             }
         });
 
-        jButton4.setText("Set");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        setButton.setText("Set");
+        setButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSet(evt);
             }
         });
 
-        jButton5.setText("Alarm");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        AlarmButton.setText("Alarm");
+        AlarmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAlarm(evt);
             }
@@ -116,23 +123,24 @@ public class HardwareSwing extends  javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(radio, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(estado))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(onSwitchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(setButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(AlarmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(radio, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(estado))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +153,11 @@ public class HardwareSwing extends  javax.swing.JFrame {
                     .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(onSwitchButton)
+                    .addComponent(addButton)
+                    .addComponent(deleteButton)
+                    .addComponent(setButton)
+                    .addComponent(AlarmButton))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -177,25 +185,29 @@ public class HardwareSwing extends  javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSwitch(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSwitch
-        // TODO add your handling code here:
+        this.onSwitchButton.addActionListener(s -> reloj.onSwitch());
     }//GEN-LAST:event_jBSwitch
 
     private void jBAlarm(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlarm
-        // TODO add your handling code here:
+        this.AlarmButton.addActionListener(a -> reloj.Alarm());
     }//GEN-LAST:event_jBAlarm
 
     private void jBSet(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSet
-        // TODO add your handling code here:
+        this.setButton.addActionListener(s -> reloj.set());
     }//GEN-LAST:event_jBSet
 
     private void jBDisminuir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDisminuir
-        // TODO add your handling code here:
+        this.deleteButton.addActionListener(d -> reloj.onPrevious());
     }//GEN-LAST:event_jBDisminuir
 
     private void jBAumentar(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAumentar
-        // TODO add your handling code here:
+        this.addButton.addActionListener(a -> reloj.onNext());
     }//GEN-LAST:event_jBAumentar
    
+    private void reloj(){
+        reloj.attach(r -> this.LReloj.setText(r));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -235,17 +247,17 @@ public class HardwareSwing extends  javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AlarmButton;
     private javax.swing.JLabel LReloj;
+    private javax.swing.JButton addButton;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextField estado;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JButton onSwitchButton;
     private javax.swing.JTextField radio;
+    private javax.swing.JButton setButton;
     // End of variables declaration//GEN-END:variables
 }
