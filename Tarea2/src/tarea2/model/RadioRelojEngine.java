@@ -28,6 +28,7 @@ public class RadioRelojEngine {
     int alarmaMinutos=0;
     String hora="";
     String alarma="";
+    Timer timer = new Timer();
 
     
     public String turnOn() {
@@ -105,8 +106,6 @@ public class RadioRelojEngine {
     }
     
     public void timeCronometro2() {
-        Timer timer;
-        timer = new Timer();
         TimerTask timerTask;
         
         Calendar calendario = new GregorianCalendar();
