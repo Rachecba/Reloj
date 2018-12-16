@@ -159,15 +159,15 @@ public class RadioRelojEngine {
     public String horaAlarma(){
         if(alarmaHoras<10){
             if(alarmaMinutos<10){
-                alarma = "0"+alarmaHoras+"0"+alarmaMinutos;
+                alarma = "0"+alarmaHoras+":0"+alarmaMinutos;
             }else{
-                alarma = "0"+alarmaHoras+alarmaMinutos;
+                alarma = "0"+alarmaHoras+":"+alarmaMinutos;
             }
         }else{
             if(alarmaMinutos<10){
-                alarma = alarmaHoras+"0"+alarmaMinutos;
+                alarma = alarmaHoras+":0"+alarmaMinutos;
             }else{
-                alarma = ""+alarmaHoras+alarmaMinutos;
+                alarma = ""+alarmaHoras+":"+alarmaMinutos;
             }
         }
         return alarma;
