@@ -23,6 +23,6 @@ public class Tarea2 {
         RadioReloj radio = new RadioRelojImpl(new RadioRelojEngine());
         
         HardwareSwing view = new HardwareSwing(radio);
-        
+        view.setVisible(true);
     }  
 }
